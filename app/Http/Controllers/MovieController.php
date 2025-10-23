@@ -11,9 +11,9 @@ class MovieController extends Controller
 {
     private MovieService $movieService;
 
-    public function __construct()
+    public function __construct(MovieService $movieService)
     {
-        $this->movieService = new MovieService();
+        $this->movieService = $movieService;
     }
 
     public function search(MovieSearchRequest $request)
