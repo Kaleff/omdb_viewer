@@ -65,8 +65,7 @@
                 </thead>
                 <tbody>
                     @forelse($recentSearches ?? [] as $search)
-                        <tr
-                            class="border-b border-[#e3e3e0] dark:border-[#3E3E3A] hover:bg-[#f8f9fa] dark:hover:bg-[#1D1D1B] transition-colors duration-200">
+                        <tr class="border-b border-[#e3e3e0] dark:border-[#3E3E3A] hover:bg-[#f8f9fa] dark:hover:bg-[#1D1D1B] transition-colors duration-200 text-center">
                             <td class="p-4">
                                 <div class="font-medium text-[#1b1b18] dark:text-[#EDEDEC] text-sm">
                                     {{ $search->search_request }}</div>
