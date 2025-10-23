@@ -43,8 +43,22 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      - name: Create Testing Environment
+        run: |
+          echo "DB_CONNECTION=sqlite" >> .env.testing
+          echo "DB_DATABASE=:memory:" >> .env.testing
+          echo "CACHE_DRIVER=array" >> .env.testing
+          echo "QUEUE_CONNECTION=sync" >> .env.testing
+          echo "SESSION_DRIVER=array" >> .env.testing
+          echo "MAIL_MAILER=array" >> .env.testing
+          echo "OMDB_API_KEY=test_key" >> .env.testing
+          echo "OMDB_API_URL=http://www.omdbapi.com/" >> .env.testing
+
+      - name: Run Database Migrations
+        run: php artisan migrate --env=testing
+
       - name: Build Assets
         run: npm run build
 
       - name: Tests
-        run: php artisan test --coverage --coverage-text
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
