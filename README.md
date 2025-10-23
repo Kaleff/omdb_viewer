@@ -44,8 +44,8 @@ docker run --rm -v ${PWD}:/app composer install
 
 8) Build front-end
 ```
-npm i
-npm run dev
+./vendor/bin/sail npm i
+./vendor/bin/sail npm run dev
 ```
 9) Make sure that the project is running at [localhost](http://localhost)
 10) Access phpMyAdmin at port 8080 [phpMyAdmin](http://localhost:8080) to view databases
