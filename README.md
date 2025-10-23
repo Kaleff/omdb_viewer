@@ -54,6 +54,35 @@ docker run --rm -v ${PWD}:/app composer install
 ./vendor/bin/sail artisan test
 ```
 
+## Application Architecture
+
+### Core Components
+
+| Component | Purpose | Location |
+|-----------|---------|----------|
+| ** MovieController ** | HTTP request handler, manages movie search and display logic | `app/Http/Controllers/MovieController.php` |
+| ** MovieService ** | Business logic layer, handles OMDB API integration and data processing | `app/Services/MovieService.php` |
+| ** MovieSearch ** | Eloquent model for storing and retrieving search history | `app/Models/MovieSearch.php` |
+| ** MovieSearchRequest ** | Form request validation for search inputs and API parameters | `app/Http/Requests/MovieSearchRequest.php` |
+
+### Key Views
+
+| View | Description | Location |
+|------|-------------|----------|
+| ** Home ** | Main search interface with recent searches table | `resources/views/home.blade.php` |
+| ** Search Results ** | Movie grid with pagination and "Load More" functionality | `resources/views/search-results.blade.php` |
+| ** Movie Details ** | Detailed movie information display page | `resources/views/movie-details.blade.php` |
+| ** App Layout ** | Base template with navigation and consistent styling | `resources/views/layouts/app.blade.php` |
+
+### Database & Testing
+
+| Type | Description | Location |
+|------|-------------|----------|
+| ** Migration ** | Database schema for movie searches table | `database/migrations/*_create_movie_searches_table.php` |
+| ** Factory ** | Test data generation for MovieSearch model | `database/factories/MovieSearchFactory.php` |
+| ** Unit Tests ** | Controller, service, and model testing suite | `tests/Unit/` |
+
+
 ## Nice  to have
 
 Sail Alias in ```~/.zshrc``` or ```~/.bashrc```
