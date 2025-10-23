@@ -39,7 +39,7 @@ docker run --rm -v ${PWD}:/app composer install
 
 7) Run the migrations and seeders.
 ```
-./vendor/bin/sail artisan migrate:refresh --seed
+./vendor/bin/sail artisan migrate:refresh
 ```
 
 8) Build front-end
@@ -49,6 +49,10 @@ npm run dev
 ```
 9) Make sure that the project is running at [localhost](http://localhost)
 10) Access phpMyAdmin at port 8080 [phpMyAdmin](http://localhost:8080) to view databases
+11) Run tests
+```
+./vendor/bin/sail artisan test
+```
 
 ## Nice  to have
 
