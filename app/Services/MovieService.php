@@ -27,6 +27,15 @@ class MovieService
         return $response;
     }
 
+    public function getMovieDetails(string $imdbID): array
+    {
+        return Http::get($this->websiteUrl, [
+            'apikey' => env('OMDB_API_KEY'),
+            'i' => $imdbID,
+            'plot' => 'full',
+        ])->json();
+    }
+
     public function getLatestSearches()
     {
         return MovieSearch::orderBy('created_at', 'desc')->get();

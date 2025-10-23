@@ -53,4 +53,16 @@ class MovieController extends Controller
 
         return view('home', compact('recentSearches'));
     }
+
+    public function show(string $imdbID)
+    {
+        try {
+            $movieDetails = $this->movieService->getMovieDetails($imdbID);
+
+            return view('movie-details', compact('movieDetails'));
+        } catch (\Exception $e) {
+            return redirect()->route('home')
+                ->with('error', 'Unable to fetch movie details. Please try again later.');
+        }
+    }
 }

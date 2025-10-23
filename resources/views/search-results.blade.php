@@ -40,31 +40,36 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 @foreach ($movies['Search'] as $movie)
-                    <div class="bg-white dark:bg-[#161615] p-4 rounded-lg border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] transition-all duration-200 flex gap-4">
-                        @if ($movie['Poster'] != 'N/A')
-                            <img src="{{ $movie['Poster'] }}" alt="{{ $movie['Title'] }}"
-                                class="w-20 h-28 object-cover rounded-sm flex-shrink-0">
-                        @else
-                            <div class="w-20 h-28 bg-[#dbdbd7] dark:bg-[#3E3E3A] rounded-sm flex items-center justify-center text-xs text-[#706f6c] dark:text-[#A1A09A] flex-shrink-0">
-                                No Image
-                            </div>
-                        @endif
+                    <a href="{{ route('movies.show', $movie['imdbID']) }}" class="block">
+                        <div class="bg-white dark:bg-[#161615] p-4 rounded-lg border border-[#e3e3e0] dark:border-[#3E3E3A] hover:border-[#1915014a] dark:hover:border-[#62605b] transition-all duration-200 flex gap-4 cursor-pointer hover:shadow-md">
+                            @if ($movie['Poster'] != 'N/A')
+                                <img src="{{ $movie['Poster'] }}" alt="{{ $movie['Title'] }}"
+                                    class="w-20 h-28 object-cover rounded-sm flex-shrink-0">
+                            @else
+                                <div class="w-20 h-28 bg-[#dbdbd7] dark:bg-[#3E3E3A] rounded-sm flex items-center justify-center text-xs text-[#706f6c] dark:text-[#A1A09A] flex-shrink-0">
+                                    No Image
+                                </div>
+                            @endif
 
-                        <div class="flex-1 min-w-0">
-                            <h3 class="font-medium text-[#1b1b18] dark:text-[#EDEDEC] mb-2 truncate">{{ $movie['Title'] }}</h3>
-                            <div class="space-y-1">
-                                <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
-                                    <span class="font-medium">Year:</span> {{ $movie['Year'] }}
-                                </p>
-                                <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
-                                    <span class="font-medium">Type:</span> {{ ucfirst($movie['Type']) }}
-                                </p>
-                                <p class="text-xs text-[#706f6c] dark:text-[#A1A09A]">
-                                    <span class="font-medium">IMDb:</span> {{ $movie['imdbID'] }}
-                                </p>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-medium text-[#1b1b18] dark:text-[#EDEDEC] mb-2 truncate">{{ $movie['Title'] }}</h3>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
+                                        <span class="font-medium">Year:</span> {{ $movie['Year'] }}
+                                    </p>
+                                    <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">
+                                        <span class="font-medium">Type:</span> {{ ucfirst($movie['Type']) }}
+                                    </p>
+                                    <p class="text-xs text-[#706f6c] dark:text-[#A1A09A]">
+                                        <span class="font-medium">IMDb:</span> {{ $movie['imdbID'] }}
+                                    </p>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="text-xs text-[#f53003] dark:text-[#FF4433] font-medium">View Details →</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 
