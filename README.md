@@ -9,8 +9,8 @@
 1) Clone the repo
 
 ```
-git clone https://github.com/Kaleff/sun-finance-task.git
-cd sun-finance-task
+git clone https://github.com/Kaleff/omdb_viewer.git
+cd omdb_viewer
 ```
 2) Copy, configure the .env.example file and rename the copy to .env
 ```
